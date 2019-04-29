@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Windows - Abdelkarim Lemaallam</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Windows";
+    var mkdocs_page_input_path = "Windows.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Abdelkarim Lemaallam</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Ubuntu/">Ubuntu</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Windows</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#administracio-remota-windows-server-2012-r2">Administració remota Windows Server 2012 R2</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#escriptori-remot-amb-windows-server2012-i-windows-81">Escriptori remot amb Windows server2012 i Windows 8.1:</a></li>
+        
+            <li><a class="toctree-l3" href="#administracio-remota-amb-rsat">Administració remota amb RSAT</a></li>
+        
+            <li><a class="toctree-l3" href="#administracio-remota-amb-team-viewer">Administració remota amb Team Viewer</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Abdelkarim Lemaallam</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Windows</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="administracio-remota-windows-server-2012-r2">Administració remota Windows Server 2012 R2</h2>
+<hr />
+<h3 id="escriptori-remot-amb-windows-server2012-i-windows-81">Escriptori remot amb Windows server2012 i Windows 8.1:</h3>
+<h4 id="primera-opcio">Primera opció:</h4>
+<blockquote>
+<p><strong>1- Habilitem el servidor</strong><br />
+El primer que cal és habilitar al servidor l'opció de permetre connexions remotes mitjançant sconfig.<br />
+<img alt="img" src="../img/Selecció_001.png" />
+<code>-</code>Accedim a <code>sconfig</code> i seleccionem el número <code>7</code>, després seleccionem la lletra <code>h</code> per a habilitar l'escriptori remot i finalment seleccionem
+l'opció <code>2</code> per a que s'execute en qualsevol versió.  </p>
+<p><strong>2- Configurem l'usuari</strong><br />
+I afegir després l'usuari al grup d'usuaris d'escriptori remot.<br />
+<img alt="img" src="../img/Selecció_002.png" />
+<code>-</code>Ara des del servidor afegim a l'usuari <code>mireia</code> els grups d'escriptori remot i d'administrador.</p>
+</blockquote>
+<h4 id="segona-opcio">Segona opció:</h4>
+<blockquote>
+<p><strong>3- Clic dret a Equipo i habilitar el servei i afegir l'usuari. el resultat és el mateix que amb els punts 1 i 2.</strong>  </p>
+</blockquote>
+<h4 id="despres">Després:</h4>
+<blockquote>
+<p><strong>4- Seguim configuran l'usuari</strong><br />
+Per tal que l'usuari pugui iniciar sessió al servidor també ha de formar part del grup d'Administradors.<br />
+<img alt="img" src="../img/Selecció_003.png" /><br />
+<code>-</code>comprovem que s'ha afegit el grup d'adminiistradors.</p>
+<p><strong>5- Accedim a l'escriptori remot.</strong><br />
+Llavors al client, només cal que vagis a escriptori remot, posis la IP del servidor i les credencials.<br />
+<img alt="img" src="../img/Selecció_004.png" /><br />
+<code>-</code>Ara accedim a <code>Conxiona a escritorio remoto</code> i afegim la IP/nom del servidor.</p>
+</blockquote>
+<p><img alt="img" src="../img/Selecció_005.png" />  </p>
+<blockquote>
+<p><code>-</code>A continuació ens demanara el nom d'usuari i la contrasenya de l'usuari en el qual volem accedir.</p>
+</blockquote>
+<p><img alt="img" src="../img/Selecció_010.png" />  </p>
+<blockquote>
+<p><code>-</code>I acceptem les credencials.</p>
+</blockquote>
+<p><img alt="img" src="../img/Selecció_011.png" />  </p>
+<blockquote>
+<p><code>-</code>Finalment ens connectem i ja podem administrar a distancia.</p>
+</blockquote>
+<h3 id="administracio-remota-amb-rsat">Administració remota amb RSAT</h3>
+<blockquote>
+<p><strong>6- Configuració previa</strong><br />
+El client ha de formar part del domini<br />
+<code>-</code>Ja hem completat aquest pas al apartat  anterior.</p>
+<p><strong>7- Configuració del client</strong><br />
+Cal que siguis administrador de l'equip local per tal de poder fer les instal·lacions<br />
+<img alt="img" src="../img/Selecció_003.png" /><br />
+<code>-</code>Comprovem que s'ha afegit el grup d'adminiistradors.</p>
+<p><strong>8- Instal·lació de RSAT en un client.</strong><br />
+Cal que et baixis el paquet corresponent RSAT segons la teva versió de servidor i segons la teva versió de client. En el meu cas, el servidor és un SERVER 2012 R2, per tant em cal un client Windows 8.1 almenys Pro i el paquet RSAT de 32 o 64 bits de la pàgina Microsoft.<br />
+<img alt="img" src="../img/Selecció_008.png" /><br />
+<code>-</code>Ens vaixem el paquet de <code>RSAT</code> de la pagina web per a la nostra versió de SO.</p>
+<p><strong>9- Instal·lació del rol RSAT en un servidor.</strong><br />
+Un cop instal·lat, cal anar a Administrador del servidor i afegir-lo.<br />
+<img alt="img" src="../img/Selecció_006.png" /><br />
+<code>-</code>Afegim el rol <code>Herramientas de administración de características</code>. </p>
+</blockquote>
+<p><img alt="img" src="../img/Selecció_007.png" />  </p>
+<blockquote>
+<p><code>-</code>Deixem les opcions per defecte.</p>
+</blockquote>
+<p><img alt="img" src="../img/Selecció_009.png" />  </p>
+<blockquote>
+<p><code>-</code>Finalment deixem que s'instal·li completament.</p>
+<p><strong>10- Comprovació del RSAT al client.</strong><br />
+Ara ja es podrà accedir a Usuaris i equip del AD a través del client. El que podràs fer amb aquest usuari del domini vindrà condicionat pels privilegis del domini. Per exemple, si l'usuari és administrador local del client, però no administrador del domini, només podràs veure les entitats, però no crear-ne de noves ni eliminar-les.<br />
+<img alt="img" src="../img/Selecció_012.png" /><br />
+<code>-</code>Comprovem que ja podem controla remotament l'administrador del servidor.</p>
+</blockquote>
+<h3 id="administracio-remota-amb-team-viewer">Administració remota amb Team Viewer</h3>
+<blockquote>
+<p><strong>11- Explicació del Team Viewer.</strong><br />
+Aquest tipus de programes no estableixen sessions, el que fan és connectar-te al servidor i mostrar directament la pantalla, és com si estesis treballant al servidor, però des de casa teva. Aquí cal anar amb compte, ja que a l'establir una connexió des de fora la xarxa interna, poden interceptar-la. El més adient seria mitjançant VPNs. Normalment aquest tipus de programes es fans ervir més aviat per a donar assistència tècnica.  </p>
+<p><strong>12- Instal·lació del Team Viewer a client i servidor Windows.</strong><br />
+Prova el Team Viewer. Et caldrà instal·lar una part al servidor i l'altra al client.<br />
+<img alt="img" src="../img/Selecció_013.png" /><br />
+<code>-</code>Per al client només fa falta descarga la versió del SO i instal·lar normalment.</p>
+</blockquote>
+<p><img alt="img" src="../img/Selecció_014.png" />  </p>
+<blockquote>
+<p><code>-</code>Per al primer cal habilitar la descarga i instal·lacio de <code>.NET</code>.</p>
+</blockquote>
+<p><img alt="img" src="../img/Selecció_015.png" />  </p>
+<blockquote>
+<p><code>-</code>Ara ja podem instal·lar el Team Viewer com al client.</p>
+</blockquote>
+<p><img alt="img" src="../img/Selecció_016.png" />  </p>
+<blockquote>
+<p><code>-</code>Per finaltizar demostrem que podem connectar des del client al servidor mitjançant la IP i la contrasenya amb el Team Viewer.</p>
+</blockquote>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../Ubuntu/" class="btn btn-neutral" title="Ubuntu"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../Ubuntu/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
