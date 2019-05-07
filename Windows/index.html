@@ -63,15 +63,13 @@
     <a class="current" href="./">Windows</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#administracio-remota-windows-server-2012-r2">Administració remota Windows Server 2012 R2</a></li>
+    <li class="toctree-l2"><a href="#uf3-implantacio-de-programari-especific">UF3 - Implantació de programari específic</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#escriptori-remot-amb-windows-server2012-i-windows-81">Escriptori remot amb Windows server2012 i Windows 8.1:</a></li>
+            <li><a class="toctree-l3" href="#administracio-remota-windows-server-2012-r2">Administració remota Windows Server 2012 R2</a></li>
         
-            <li><a class="toctree-l3" href="#administracio-remota-amb-rsat">Administració remota amb RSAT</a></li>
-        
-            <li><a class="toctree-l3" href="#administracio-remota-amb-team-viewer">Administració remota amb Team Viewer</a></li>
+            <li><a class="toctree-l3" href="#servidor-dactualizacions">Servidor d'actualizacions</a></li>
         
         </ul>
     
@@ -111,7 +109,9 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="administracio-remota-windows-server-2012-r2">Administració remota Windows Server 2012 R2</h2>
+                <h1 id="uf3-implantacio-de-programari-especific">UF3 - Implantació de programari específic</h1>
+<hr />
+<h2 id="administracio-remota-windows-server-2012-r2">Administració remota Windows Server 2012 R2</h2>
 <hr />
 <h3 id="escriptori-remot-amb-windows-server2012-i-windows-81">Escriptori remot amb Windows server2012 i Windows 8.1:</h3>
 <h4 id="primera-opcio">Primera opció:</h4>
@@ -204,6 +204,235 @@ Prova el Team Viewer. Et caldrà instal·lar una part al servidor i l'altra al c
 <blockquote>
 <p><code>-</code>Per finaltizar demostrem que podem connectar des del client al servidor mitjançant la IP i la contrasenya amb el Team Viewer.</p>
 </blockquote>
+<h2 id="servidor-dactualizacions">Servidor d'actualizacions</h2>
+<h3 id="preparem-lentorn-per-poder-realitzar-les-actualizacions">Preparem l'entorn per poder realitzar les actualizacions</h3>
+<blockquote>
+<p><strong>Instal·lem un Windows server 2012 R2</strong><br />
+1. Instal·la un Windows Server 2012 R2
+<img alt="img" src="../img/Selecció_017.png" />  </p>
+<p><strong>Donem un nom i una IP fixa al servidor</strong><br />
+2. Comprova nom i ip de la màquina<br />
+<img alt="img" src="../img/Selecció_018.png" />  </p>
+<p><strong>Instal·lem un domini</strong><br />
+3. Instal·la un domini<br />
+<img alt="img" src="../img/Selecció_019.png" />  </p>
+<p><strong>Desactivem el firewwall</strong><br />
+4. Desactiva firewall<br />
+<img alt="img" src="../img/Selecció_020.png" />  </p>
+<p><strong>Afegim un disc dur de 10GB i dóna-li format</strong><br />
+5. Afegeix un segon disc de 10GB i dóna-li format (serà el lloc on emmagatzemarem les actualitzacions)<br />
+<img alt="img" src="../img/Selecció_021.png" />  </p>
+<p><strong>Instal·lem Windows 8.1 i l'activem</strong><br />
+6. Instal·la un Windows  i activa'l (és necessari que estigui activat per a poder actualitzar-lo)<br />
+<img alt="img" src="../img/Selecció_022.png" />  </p>
+<p><strong>Unim el client windows al domini</strong><br />
+7. Uneix-lo al domini<br />
+<img alt="img" src="../img/Selecció_023.png" />  </p>
+<p><strong>Instal·lem office al client</strong><br />
+8. Instal·la un office al client<br />
+<img alt="img" src="../img/Selecció_029.png" />  </p>
+</blockquote>
+<h3 id="el-servidor-wsus">El servidor WSUS</h3>
+<ol>
+<li>
+<p>Instal·la el rol de Windows Server Update Services deixant paràmetres per defecte. Quan et pregunti a quin lloc vols emmagatzemar les actualitzacions, recorda de dir-li el 2n disc que has afegit anteriorment (per exemple: F:)  </p>
+<blockquote>
+<p><strong>Instal·lem el rol de WSUS.</strong>
+<img alt="img" src="../img/Selecció_024.png" /><br />
+<img alt="img" src="../img/Selecció_025.png" /><br />
+<img alt="img" src="../img/Selecció_027.png" />  </p>
+</blockquote>
+</li>
+<li>
+<p>Un cop instal·lat accedeix a Herramientas/Windows Server Update Services</p>
+<blockquote>
+<p><strong>Ara accedim a la configuració del WSUS.</strong><br />
+<img alt="img" src="../img/Selecció_028.png" />  </p>
+</blockquote>
+</li>
+<li>
+<p>En la primera configuració cal escollir:  </p>
+<blockquote>
+<p><strong>Ara seleccionem les següents opcións tal com ens aniran sortint.</strong></p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<blockquote>
+<p>a. Es sincronitzarà des de Microsoft Update<br />
+<img alt="img" src="../img/Selecció_031.png" /><br />
+b. No proxy<br />
+<img alt="img" src="../img/Selecció_032.png" /><br />
+c. Iniciem la connexió (pot tardar un ratet)<br />
+<img alt="img" src="../img/Selecció_033.png" /><br />
+d. Español<br />
+<img alt="img" src="../img/Selecció_034.png" /><br />
+e. He escollit uns quants pensant amb la màquina Windows 7  i amb l'office 2007, però tu hauràs d'escollir segons la versió dell client que hagis unit al domini i segons quin office hagis instal·lat<br />
+<img alt="img" src="../img/Selecció_035.png" /><br />
+f. Totes les classificacions<br />
+<img alt="img" src="../img/Selecció_036.png" /><br />
+g. Automàticament<br />
+h. Iniciem sincronització inicial (al ser el primer cop tarda bastant en descarregar totes les actualitzacions)<br />
+<img alt="img" src="../img/Selecció_037.png" />  </p>
+</blockquote>
+</blockquote>
+<ol>
+<li>
+<p>Torna a Herramientas /Windows Server Service Updates</p>
+<blockquote>
+<p><strong>Ara accedim a la configuració del WSUS.</strong><br />
+<img alt="img" src="../img/Selecció_028.png" />  </p>
+</blockquote>
+</li>
+<li>
+<p>Paciència en la descàrrega de les actualitzacions, fes captura on es vegi com es descarreguen i com s'han descarregat
+<img alt="img" src="../img/Selecció_038.png" /><br />
+<img alt="img" src="../img/Selecció_039.png" />  </p>
+</li>
+</ol>
+<h3 id="actualitzacio-dels-clients">Actualització dels clients</h3>
+<ol>
+<li>Al server ves al menú de Windows Update dintre de ferramentes administratives</li>
+<li>Al menú de sincronitzacions t’han d’aparèixer totes les que has fet (COMPTE: són les sincronitzacions que ha fet el server per a descarregar-se paquets, NO les dels equips)<blockquote>
+<p><strong>Comprovem les actualizacions que hem fet.</strong>
+<img alt="img" src="../img/Selecció_041.png" />  </p>
+</blockquote>
+</li>
+<li>Al menú equipos, tens equipos sin asignar i has de crear un altre grup, posa-li també el nom de maquines. Fes cli dret damunt de Todos los equipos i dis-li d'afegir un nou grup d'equips, al qual li posaràs de nom Equips<blockquote>
+<p><strong>Afegim un nou grup el qual l'hi direm <code>Equips</code>.</strong>
+<img alt="img" src="../img/Selecció_042.png" />  </p>
+</blockquote>
+</li>
+<li>MOLT IMPORTANT: si no aprobes les actualitzacions, aquesta NO s’instal·laran en els equips client). Aproba-les totes mitjançant el menú Actualizacions/Todas las actualizaciones.<blockquote>
+<p><strong>Aprobem les actualizacions.</strong>
+<img alt="img" src="../img/Selecció_041.png" />  </p>
+</blockquote>
+</li>
+<li>Ara ves al  menú opciones:<blockquote>
+<blockquote>
+<p>a. Aprobaciones automáticas. Configura una regla per tal que l'aprovació que has fet en el pas anterior sigui automàtic.<br />
+b. Asistente para limpieza del servidor. Llimpia totes aquelles actualitzacions que ja no calen.<br />
+c. Equipos. Has de marcar la segona opció, la que diu que asignarem els equips als grups a través de GPOs.<br />
+d. Mira les altres opcions<br />
+<img alt="img" src="../img/Selecció_043.png" /><br />
+<strong>Completem les opcions indicades anteriorment i diem qie utilitze les directives de grup.</strong></p>
+</blockquote>
+</blockquote>
+</li>
+<li>Tanca<blockquote>
+<p><strong>Tanquem la finestra actual.</strong></p>
+</blockquote>
+</li>
+<li>Ves a usuaris i equips de l'AD i crea una nova UO anomenada maquines, la qual dinter ha de tenir l'equip validat al domini<blockquote>
+<p><strong>Ara afegim una nova Unitat Organitzativa anomenada Actualizacions.</strong>
+<img alt="img" src="../img/Selecció_044.png" />  </p>
+</blockquote>
+</li>
+<li>Ves a les directives de grup<blockquote>
+<p><strong>Anem a la directiva de grups.</strong></p>
+</blockquote>
+</li>
+<li>Clic dret a sobre la UO maquines que has creat abans, i crea una nova GPO que es digui “pc_update”<blockquote>
+<p><strong>Creem una nova GPO anomenada <code>pc_update</code>.</strong>
+<img alt="img" src="../img/Selecció_045.png" />  </p>
+</blockquote>
+</li>
+<li>
+<p>Clic dreta a sobre d’ella i editar</p>
+<blockquote>
+<p><strong>Ara anem a les opcions per editar-les.</strong></p>
+</blockquote>
+</li>
+<li>
+<p>Tot el que has de configurar sobre les actualitzacions ho trobaràs a Configuración de equipo/Directivas/Plantillas administrativas/
+Componentes de Windows/Windows Update</p>
+<blockquote>
+<blockquote>
+<p>a. Configurar actualizaciones autmáticas. Has d’escollir 4. Descargar actualizaciones automàticament e instalarlas en la programación especificada a continuación. Programa tots els dies, i escolleix una hora que puguis provar. (les 12.00, les 13.00).
+<img alt="img" src="../img/Selecció_046.png" /><br />
+<strong>Habilitem la plantilla de actualizacions automatiques i seleccionem l'opció <code>4</code> i editem l'hora.</strong><br />
+b. Especificar la ubicación del servicio Microsoft Update en la intranet. Has de posar el nom de l’equip server. Per exemple: http://WINSERVERR2
+<img alt="img" src="../img/Selecció_047.png" /><br />
+<strong>Ara afegim el nom de lequip <code>http://SERVER-KARIM:8530</code> i l'hbilitem.</strong><br />
+c. Habilitar destinatarios del lado del cliente. Has d’escriure el nom del grup al qual vols que vagin, és el nom que has posar al Windows Update, no als usuaris i equips del AD, el que passa és que l’hem fet coincidir. Equips.
+<img alt="img" src="../img/Selecció_051.png" /><br />
+<strong>Habilitem <code>destinatarios del lado del cliente</code> i indiquem el nom del grup <code>Equips</code>.</strong><br />
+d. Volver a programar la instalación... Posa 1 minuts.
+<img alt="img" src="../img/Selecció_050.png" /><br />
+<strong>Habilitem <code>Volver a programar la instalación</code> i indiquem 1 minut despera.</strong><br />
+e. No reiniciar automàticament... Habilitala.
+<img alt="img" src="../img/Selecció_049.png" /><br />
+<strong>Habilitem el no reinici automatic.</strong></p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>Tanca-ho tot.</p>
+<blockquote>
+<p><strong>Tanquem tot el que haviem obert.</strong></p>
+</blockquote>
+</li>
+<li>
+<p>Obre una consola i fes un gpupdate.</p>
+<blockquote>
+<p><strong>Executem gpugrade al powershell.</strong>
+<img alt="img" src="../img/Selecció_052.png" />  </p>
+</blockquote>
+</li>
+<li>
+<p>Ves al Windows client i reinicia la màquina.</p>
+<blockquote>
+<p><strong>Reiniciem la maquina client.</strong></p>
+</blockquote>
+</li>
+<li>
+<p>Anem a comprovar que hagi agafat bé les GPOs. Al Windows client ves al tauler de control i escriu Windows Update. Si mires la programació de les actualitzacions hauria de mostrar la que has configurat al server.</p>
+</li>
+<li>Ara hauríem d’esperar per veure com fa l’actualització automàticament (si li has posat les 12.00 podria ser que tardés uns minutets més, a mi em va passar).</li>
+<li>Pots provar de dir-li que s’actualitzi en aquell moment.<blockquote>
+<p><strong>Ja que no son les 12:00 iniciarem les actualitzacions en aquest moment.</strong>
+<img alt="img" src="../img/Selecció_053.png" />  </p>
+</blockquote>
+</li>
+<li>Un cop actualitzat el Windows client, al server, a la consola d’actualitzacions t’hauria de sortir dintre de equipos/maquines la maquina Windows client i dient les actualitzacions que s’han instal·lat, les que han donat error...<blockquote>
+<p><strong>Ja podem comprovar l'estat de les actualitzacions en cada equip client.</strong>
+<img alt="img" src="../img/Selecció_054.png" />  </p>
+</blockquote>
+</li>
+</ol>
+<h3 id="informes">Informes</h3>
+<ol>
+<li>
+<p>Dintre del WSUS hi ha un apartat informes, clica en alguna opció. Què et diu?</p>
+<blockquote>
+<p><strong>Hem diu que s'ha dinstal·lar <code>Report Viewer Redistributable 2008</code>.</strong></p>
+</blockquote>
+</li>
+<li>
+<p>Instal·la la característica "Características de .NET Framework X" (és imprescindible per al següent pas)</p>
+<blockquote>
+<p><strong>Instal·lem el rol de <code>Características de .NET Framework X</code>.</strong>
+<img alt="img" src="../img/Selecció_055.png" /><br />
+<img alt="img" src="../img/Selecció_056.png" />  </p>
+</blockquote>
+</li>
+<li>
+<p>Instal·la el Report Viewer Redistributable 2008</p>
+<blockquote>
+<p><strong>Un cop instal·lat <code>Características de .NET Framework X</code> ja podem instal·lar el Report Viewer R2008.</strong><br />
+<img alt="img" src="../img/Selecció_057.png" /><br />
+<img alt="img" src="../img/Selecció_058.png" />  </p>
+</blockquote>
+</li>
+<li>
+<p>Torna a l'apartat informes del WSUS i mira'ls</p>
+<blockquote>
+<p><strong>Ja podem observa el informes individuals i generals de tots els euips.</strong>
+<img alt="img" src="../img/Selecció_059.png" /><br />
+<img alt="img" src="../img/Selecció_060.png" />  </p>
+</blockquote>
+</li>
+</ol>
               
             </div>
           </div>
