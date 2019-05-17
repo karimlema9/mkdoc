@@ -58,7 +58,13 @@
     <a class="current" href="./">Ubuntu</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#ubuntu">Ubuntu</a></li>
+    <li class="toctree-l2"><a href="#uf3-implantacio-de-programari-especific">UF3 - Implantació de programari específic</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#administracio-remota-ubuntu-server">Administració remota Ubuntu Server</a></li>
+        
+        </ul>
     
 
     </ul>
@@ -101,7 +107,85 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="ubuntu">Ubuntu</h2>
+                <h1 id="uf3-implantacio-de-programari-especific">UF3 - Implantació de programari específic</h1>
+<hr />
+<h2 id="administracio-remota-ubuntu-server">Administració remota Ubuntu Server</h2>
+<hr />
+<h3 id="servidor-dactualitzacions">Servidor d'actualitzacions</h3>
+<blockquote>
+<p><strong>1- Configuració d'apache</strong><br />
+<img alt="img" src="../img/Selecció_061.png" />
+Instal·lem el paquet de <code>apache2</code> al nostre servidor, en aquest cas ja estava instal·lat.<br />
+<img alt="img" src="../img/Selecció_062.png" />
+Comprovem escrivint <code>localhost</code> al cercador del servidor que apache funciona.  </p>
+<p><strong>2- Configuració de mirror</strong><br />
+<img alt="img" src="../img/Selecció_063.png" />
+Instal·lem el paquet de <code>apt-mirror</code> al nostre servidor.<br />
+Després accedim a <code>/etc/apt/mirror.list</code> i editem el fitxer afegint el següent text.<br />
+<img alt="img" src="../img/Selecció_065.png" /></p>
+<pre><code>############# config ##################
+#
+# set base_path    /var/spool/apt-mirror
+#
+# set mirror_path  $base_path/mirror
+# set skel_path    $base_path/skel
+# set var_path     $base_path/var
+# set cleanscript $var_path/clean.sh
+# set defaultarch  
+# set postmirror_script $var_path/postmirror.sh
+# set run_postmirror 0
+set nthreads     20
+set _tilde 0
+# set limit_rate 2000k
+#
+############# end config ##############
+</code></pre>
+</blockquote>
+<pre><code># mirror Google Earth – Instal·lacio Google Earth
+deb-amd64 http://dl.google.com/linux/earth/deb/ stable main
+
+clean http://es.archive.ubuntu.com/ubuntu/
+clean http://security.ubuntu.com/ubuntu/
+clean http://archive.canonical.com/ubuntu/
+clean http://oem.archive.canonical.com/updates/
+clean http://hp.archive.canonical.com/updates/
+clean http://desarrollo.educarex.es/solointranet/ubuntu/
+clean http://dl.google.com/linux/chrome/
+</code></pre>
+<p><img alt="img" src="../img/Selecció_072.png" /></p>
+<blockquote>
+<p>Ara creem un enllaç simbolic amb un dels paquets i el redirigim al <code>/var/www/html</code> per a que puguesim accedir des de apache.  </p>
+</blockquote>
+<p><img alt="img" src="../img/Selecció_067.png" /></p>
+<blockquote>
+<p>Programem amb <code>crontab</code> quan quan inicie la tasca de <code>apt-mirror</code> la redirigir al <code>cron.log</code>.  </p>
+</blockquote>
+<p><img alt="img" src="../img/Selecció_068.png" /></p>
+<blockquote>
+<p>També programem quan volem que finalitze la tasca programada de <code>apt-mirror</code>.  </p>
+<p><strong>3- Configuració dels repositoris</strong><br />
+<img alt="img" src="../img/Selecció_070.png" />
+Ara iniciem la descarrega dels repositoris que hem seleccionat anteriorment.  </p>
+</blockquote>
+<p><img alt="img" src="../img/Selecció_071.png" /></p>
+<blockquote>
+<p>Comprovem amb un tree que s'ha descarregat correctament els paquets.  </p>
+<p><strong>4- Configuració del client</strong><br />
+<img alt="img" src="../img/Selecció_073.png" />
+Ara des del cercador del client afegim la IP del servidor més la ruta per comprovar que funciona.<br />
+IP del servidor <code>192.168.203.188</code>, IP del client <code>192.168.233.199</code>.  </p>
+</blockquote>
+<p><img alt="img" src="../img/Selecció_076.png" /></p>
+<blockquote>
+<p>Accedim a l'arxiu <code>/etc/apt/source.list</code> i afegim la linia corresponent al paquet que hem creat al servidor.  </p>
+<p><strong>5- Comprovació final</strong><br />
+<img alt="img" src="../img/Selecció_075.png" />
+Ara actualitzem el repositori i podem comprovar que ja ens agafa els paquets de la IP del servidor <code>192.168.233.188</code>.  </p>
+</blockquote>
+<p><img alt="img" src="../img/Selecció_077.png" /></p>
+<blockquote>
+<p>Finalment fem una comprovació de que podem instal·lar paquets correctament.  </p>
+</blockquote>
               
             </div>
           </div>
